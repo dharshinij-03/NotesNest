@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/notesnest-logo.png"; // adjust path to where your image is stored
 
 function Navbar({ user }) {
   const handleLogout = async () => {
@@ -7,7 +8,6 @@ function Navbar({ user }) {
         method: "GET",
         credentials: "include", // send session cookie
       });
-      // after successful logout, reload or redirect
       window.location.href = "http://localhost:3000";
     } catch (err) {
       console.error("Logout failed", err);
@@ -16,7 +16,14 @@ function Navbar({ user }) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm px-4 py-2">
-      <a className="navbar-brand fw-bold fs-4" href="/">📝 NotesNest</a>
+      <a className="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/">
+        <img
+          src={logo}
+          alt="NotesNest Logo"
+          style={{ height: "40px", marginRight: "10px" }}
+        />
+        NotesNest
+      </a>
 
       <div className="ms-auto d-flex align-items-center">
         {user ? (
